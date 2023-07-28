@@ -40,6 +40,13 @@ public class followMouse : MonoBehaviour
     }
 
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        EventHandler.OnPlayerDeath += disableScript;
+    }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -47,5 +54,16 @@ public class followMouse : MonoBehaviour
         Vector3 mouseDir = toWorldPos(Input.mousePosition);
         float power = posToDeg(spaceShipDir, mouseDir);
         rb2d.AddTorque(power * Time.fixedDeltaTime);
+    }
+
+
+    public void disableScript()
+    {
+        this.enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        EventHandler.OnPlayerDeath -= disableScript;
     }
 }

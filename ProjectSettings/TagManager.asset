@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Long Bullet
   - Short Bullet
+  - Event Manager
   layers:
   - Default
   - TransparentFX
